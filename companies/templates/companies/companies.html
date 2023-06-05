@@ -1,0 +1,71 @@
+{% extends 'companies/main.html' %}
+
+{% block content %}
+
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Kuruluş <b>Listesi</b></h2></div>
+                    <div class="col-sm-4">
+                        <a class="btn btn_sm btn-info" href="{% url 'add_companies'%}">Yeni</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lr-6">
+                    <div class="card card-body">
+                        <form method="get">
+
+                            {{myFilter.form}}
+                            <button class="btn btn_sm btn-info" href="{% url 'add_companies'%}">Ara</button>
+
+            
+                           
+                    
+                        </form>
+                        
+                    </div>
+            
+                </div>
+            
+            </div>
+            <br>
+            <table class="table">
+
+                <tr>
+                    <th>img</th>
+                    <th>Kuruluş adı</th>
+                    <th>Kuruluş türü</th>
+                    <th>Çalışan sayısı</th>
+                    <th>Ülke</th>
+                    <th>Firma web site</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                    
+                </tr>
+                
+                {% for i in companies%}
+                    <tr>
+                        <td>{{i.Kurulus_logo}}</td>
+                        <td>{{i.Kurulus_adi}}</td>
+                        <td>{{i.Kurulus_turu}}</td>
+                        <td>{{i.Calisan_sayisi}}</td>
+                        <td>{{i.Ulke}}</td>
+                        <td>{{i.Firma_website}}</td>
+                        <th><a class="btn btn_sm btn-info" href="{% url 'update_companies' i.id %}">Düzemle</a></th>
+                        <th><a class="btn btn_sm btn-danger" href="{% url 'delete_companies' i.id %}">Sil</a></th>
+                    </tr>
+                    
+                {%endfor%}
+                
+            </table>
+            
+
+                
+        </div>
+    </div>
+</div>    
+{% endblock  %}

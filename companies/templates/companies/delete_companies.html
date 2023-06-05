@@ -1,0 +1,26 @@
+{% extends 'companies/main.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+
+            <p>"{{item}}" silmek istediğinizden emin misiniz?</p>
+            <form action="{% url 'delete_companies' item.id %}" method="POST">
+            
+                {% csrf_token %}
+                <a class="btn btn_sm btn-info" href="{% url 'home' %}">İptal</a>
+        
+        
+                <input class="btn btn_sm btn-danger" type="submit" name="Confirm">
+        
+        
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock  %}
